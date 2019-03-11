@@ -234,3 +234,615 @@
 |EEEEEEEEEFFF
 |
 |EEEEEEEEE
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|
+|About to run: (==)(10, 0)
+|1|debug> n
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|8     zb = trailing_zeros(b)
+|
+|About to run: (==)(20, 0)
+|1|julia> a
+|10
+|
+|1|debug> n^C
+|
+|1|debug> fr
+|[1] my_gcd(a, b) at ui.jl:5
+|b::Int64 = 20
+|a::Int64 = 10
+|T::DataType = Int64
+|1|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAA
+|BBCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|EEEEEEEEEF
+|GGGGGGGGGGGGGGGGGGGGGGGGGG
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|HHFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|
+|FFFFFFFFFFFFFFFFFFFFFFFFF
+|IIIIIIIIIF
+|FF
+|
+|EEEEEEEEEFFF
+|
+|EEEEEEEEEFF
+|FFFFFFFFFFFFFFFFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFFFFFFFF
+|EEEEEEEEE
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|
+|About to run: (==)(10, 0)
+|1|debug> n
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|8     zb = trailing_zeros(b)
+|
+|About to run: (==)(20, 0)
+|1|julia> a
+|10
+|
+|1|debug> n^C
+|
+|1|debug> fr
+|[1] my_gcd(a, b) at ui.jl:5
+|b::Int64 = 20
+|a::Int64 = 10
+|T::DataType = Int64
+|1|debug> w a a + b
+|1|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAA
+|BBCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|EEEEEEEEEF
+|GGGGGGGGGGGGGGGGGGGGGGGGGG
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|HHFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|
+|FFFFFFFFFFFFFFFFFFFFFFFFF
+|IIIIIIIIIF
+|FF
+|
+|EEEEEEEEEFFF
+|
+|EEEEEEEEEFF
+|FFFFFFFFFFFFFFFFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFFFFFFFF
+|EEEEEEEEEFFFFFFFFF
+|EEEEEEEEE
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|
+|About to run: (==)(10, 0)
+|1|debug> n
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|8     zb = trailing_zeros(b)
+|
+|About to run: (==)(20, 0)
+|1|julia> a
+|10
+|
+|1|debug> n^C
+|
+|1|debug> fr
+|[1] my_gcd(a, b) at ui.jl:5
+|b::Int64 = 20
+|a::Int64 = 10
+|T::DataType = Int64
+|1|debug> w a a + b
+|1|debug> w
+|1] a + b: 30
+|
+|1|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAA
+|BBCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|EEEEEEEEEF
+|GGGGGGGGGGGGGGGGGGGGGGGGGG
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|HHFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|
+|FFFFFFFFFFFFFFFFFFFFFFFFF
+|IIIIIIIIIF
+|FF
+|
+|EEEEEEEEEFFF
+|
+|EEEEEEEEEFF
+|FFFFFFFFFFFFFFFFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFFFFFFFF
+|EEEEEEEEEFFFFFFFFF
+|EEEEEEEEEF
+|FFFFFFFFFFFF
+|
+|EEEEEEEEE
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|
+|About to run: (==)(10, 0)
+|1|debug> n
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|8     zb = trailing_zeros(b)
+|
+|About to run: (==)(20, 0)
+|1|julia> a
+|10
+|
+|1|debug> n^C
+|
+|1|debug> fr
+|[1] my_gcd(a, b) at ui.jl:5
+|b::Int64 = 20
+|a::Int64 = 10
+|T::DataType = Int64
+|1|debug> w a a + b
+|1|debug> w
+|1] a + b: 30
+|
+|1|debug> w a sin(a)
+|1|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAA
+|BBCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|EEEEEEEEEF
+|GGGGGGGGGGGGGGGGGGGGGGGGGG
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|HHFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|
+|FFFFFFFFFFFFFFFFFFFFFFFFF
+|IIIIIIIIIF
+|FF
+|
+|EEEEEEEEEFFF
+|
+|EEEEEEEEEFF
+|FFFFFFFFFFFFFFFFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFFFFFFFF
+|EEEEEEEEEFFFFFFFFF
+|EEEEEEEEEF
+|FFFFFFFFFFFF
+|
+|EEEEEEEEEFFFFFFFFFF
+|EEEEEEEEE
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|
+|About to run: (==)(10, 0)
+|1|debug> n
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|8     zb = trailing_zeros(b)
+|
+|About to run: (==)(20, 0)
+|1|julia> a
+|10
+|
+|1|debug> n^C
+|
+|1|debug> fr
+|[1] my_gcd(a, b) at ui.jl:5
+|b::Int64 = 20
+|a::Int64 = 10
+|T::DataType = Int64
+|1|debug> w a a + b
+|1|debug> w
+|1] a + b: 30
+|
+|1|debug> w a sin(a)
+|1|debug> w
+|1] a + b: 30
+|2] sin(a): -0.5440211108893698
+|
+|1|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAA
+|BBCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|EEEEEEEEEF
+|GGGGGGGGGGGGGGGGGGGGGGGGGG
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|HHFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|
+|FFFFFFFFFFFFFFFFFFFFFFFFF
+|IIIIIIIIIF
+|FF
+|
+|EEEEEEEEEFFF
+|
+|EEEEEEEEEFF
+|FFFFFFFFFFFFFFFFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFFFFFFFF
+|EEEEEEEEEFFFFFFFFF
+|EEEEEEEEEF
+|FFFFFFFFFFFF
+|
+|EEEEEEEEEFFFFFFFFFF
+|EEEEEEEEEF
+|FFFFFFFFFFFF
+|FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|
+|EEEEEEEEE
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|
+|About to run: (==)(10, 0)
+|1|debug> n
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|8     zb = trailing_zeros(b)
+|
+|About to run: (==)(20, 0)
+|1|julia> a
+|10
+|
+|1|debug> n^C
+|
+|1|debug> fr
+|[1] my_gcd(a, b) at ui.jl:5
+|b::Int64 = 20
+|a::Int64 = 10
+|T::DataType = Int64
+|1|debug> w a a + b
+|1|debug> w
+|1] a + b: 30
+|
+|1|debug> w a sin(a)
+|1|debug> w
+|1] a + b: 30
+|2] sin(a): -0.5440211108893698
+|
+|1|debug> w c 1
+|1|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAA
+|BBCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|EEEEEEEEEF
+|GGGGGGGGGGGGGGGGGGGGGGGGGG
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|HHFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|
+|FFFFFFFFFFFFFFFFFFFFFFFFF
+|IIIIIIIIIF
+|FF
+|
+|EEEEEEEEEFFF
+|
+|EEEEEEEEEFF
+|FFFFFFFFFFFFFFFFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFFFFFFFF
+|EEEEEEEEEFFFFFFFFF
+|EEEEEEEEEF
+|FFFFFFFFFFFF
+|
+|EEEEEEEEEFFFFFFFFFF
+|EEEEEEEEEF
+|FFFFFFFFFFFF
+|FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|
+|EEEEEEEEEFFFFF
+|EEEEEEEEE
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|
+|About to run: (==)(10, 0)
+|1|debug> n
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|8     zb = trailing_zeros(b)
+|
+|About to run: (==)(20, 0)
+|1|julia> a
+|10
+|
+|1|debug> n^C
+|
+|1|debug> fr
+|[1] my_gcd(a, b) at ui.jl:5
+|b::Int64 = 20
+|a::Int64 = 10
+|T::DataType = Int64
+|1|debug> w a a + b
+|1|debug> w
+|1] a + b: 30
+|
+|1|debug> w a sin(a)
+|1|debug> w
+|1] a + b: 30
+|2] sin(a): -0.5440211108893698
+|
+|1|debug> w c 1
+|1|debug> w
+|1] sin(a): -0.5440211108893698
+|
+|1|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAA
+|BBCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|EEEEEEEEEF
+|GGGGGGGGGGGGGGGGGGGGGGGGGG
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|HHFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|
+|FFFFFFFFFFFFFFFFFFFFFFFFF
+|IIIIIIIIIF
+|FF
+|
+|EEEEEEEEEFFF
+|
+|EEEEEEEEEFF
+|FFFFFFFFFFFFFFFFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFFFFFFFF
+|EEEEEEEEEFFFFFFFFF
+|EEEEEEEEEF
+|FFFFFFFFFFFF
+|
+|EEEEEEEEEFFFFFFFFFF
+|EEEEEEEEEF
+|FFFFFFFFFFFF
+|FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|
+|EEEEEEEEEFFFFF
+|EEEEEEEEEF
+|FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|
+|EEEEEEEEE
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|
+|About to run: (==)(10, 0)
+|1|debug> n
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|8     zb = trailing_zeros(b)
+|
+|About to run: (==)(20, 0)
+|1|julia> a
+|10
+|
+|1|debug> n^C
+|
+|1|debug> fr
+|[1] my_gcd(a, b) at ui.jl:5
+|b::Int64 = 20
+|a::Int64 = 10
+|T::DataType = Int64
+|1|debug> w a a + b
+|1|debug> w
+|1] a + b: 30
+|
+|1|debug> w a sin(a)
+|1|debug> w
+|1] a + b: 30
+|2] sin(a): -0.5440211108893698
+|
+|1|debug> w c 1
+|1|debug> w
+|1] sin(a): -0.5440211108893698
+|
+|1|debug> w c
+|1|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAA
+|BBCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|EEEEEEEEEF
+|GGGGGGGGGGGGGGGGGGGGGGGGGG
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|HHFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|
+|FFFFFFFFFFFFFFFFFFFFFFFFF
+|IIIIIIIIIF
+|FF
+|
+|EEEEEEEEEFFF
+|
+|EEEEEEEEEFF
+|FFFFFFFFFFFFFFFFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFFFFFFFF
+|EEEEEEEEEFFFFFFFFF
+|EEEEEEEEEF
+|FFFFFFFFFFFF
+|
+|EEEEEEEEEFFFFFFFFFF
+|EEEEEEEEEF
+|FFFFFFFFFFFF
+|FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|
+|EEEEEEEEEFFFFF
+|EEEEEEEEEF
+|FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|
+|EEEEEEEEEFFF
+|EEEEEEEEE
+++++++++++++++++++++++++++++++++++++++++++++++++++
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|
+|About to run: (==)(10, 0)
+|1|debug> n
+|In my_gcd(a, b) at ui.jl:5
+|5     a == 0 && return abs(b)
+|6     b == 0 && return abs(a)
+|7     za = trailing_zeros(a)
+|8     zb = trailing_zeros(b)
+|
+|About to run: (==)(20, 0)
+|1|julia> a
+|10
+|
+|1|debug> n^C
+|
+|1|debug> fr
+|[1] my_gcd(a, b) at ui.jl:5
+|b::Int64 = 20
+|a::Int64 = 10
+|T::DataType = Int64
+|1|debug> w a a + b
+|1|debug> w
+|1] a + b: 30
+|
+|1|debug> w a sin(a)
+|1|debug> w
+|1] a + b: 30
+|2] sin(a): -0.5440211108893698
+|
+|1|debug> w c 1
+|1|debug> w
+|1] sin(a): -0.5440211108893698
+|
+|1|debug> w c
+|1|debug> w
+|
+|1|debug> 
+--------------------------------------------------
+|AAAAAAAAAAAAAAAAAAAAAAAAAA
+|BBCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCCC
+|DDCCCCCCCCCCCCCCCCCCCCCCCCCC
+|
+|CCCCCCCCCCCCCCCCCCCCCCCCC
+|EEEEEEEEEF
+|GGGGGGGGGGGGGGGGGGGGGGGGGG
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|HHFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|GGFFFFFFFFFFFFFFFFFFFFFFFFFF
+|
+|FFFFFFFFFFFFFFFFFFFFFFFFF
+|IIIIIIIIIF
+|FF
+|
+|EEEEEEEEEFFF
+|
+|EEEEEEEEEFF
+|FFFFFFFFFFFFFFFFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFF
+|FFFFFFFFFFFFFFFFFFF
+|EEEEEEEEEFFFFFFFFF
+|EEEEEEEEEF
+|FFFFFFFFFFFF
+|
+|EEEEEEEEEFFFFFFFFFF
+|EEEEEEEEEF
+|FFFFFFFFFFFF
+|FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|
+|EEEEEEEEEFFFFF
+|EEEEEEEEEF
+|FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+|
+|EEEEEEEEEFFF
+|EEEEEEEEEF
+|
+|EEEEEEEEE

@@ -27,9 +27,14 @@ export @enter
 include("LineNumbers.jl")
 using .LineNumbers: SourceFile, compute_line
 
+# We make WATCH_LIST a global since it is likely useful to keep
+# watch expressions between invocations of the debugger interface
+const WATCH_LIST = []
+
 mutable struct DebuggerState
     stack::Vector{JuliaStackFrame}
     level::Int
+    watch_list::Vector
     repl
     terminal
     main_mode
@@ -37,7 +42,7 @@ mutable struct DebuggerState
     standard_keymap
     overall_result
 end
-DebuggerState(stack, repl, terminal) = DebuggerState(stack, 1, repl, terminal, nothing, Ref{LineEdit.Prompt}(), nothing, nothing)
+DebuggerState(stack, repl, terminal) = DebuggerState(stack, 1, WATCH_LIST, repl, terminal, nothing, Ref{LineEdit.Prompt}(), nothing, nothing)
 DebuggerState(stack, repl) = DebuggerState(stack, repl, nothing)
 
 active_frame(state) = state.stack[end - state.level + 1]
@@ -46,6 +51,7 @@ include("locationinfo.jl")
 include("repl.jl")
 include("commands.jl")
 include("printing.jl")
+include("watch.jl")
 
 function _make_stack(mod, arg)
     args = try

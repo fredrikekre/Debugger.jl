@@ -48,6 +48,7 @@ end
 function assert_is_toplevel_frame(state)
     state.level == 1 && return true
     printstyled(stderr, "Cannot step or mutate variables in a non toplevel frame,\n"; color=:red)
+
     return false
 end
 
@@ -177,7 +178,6 @@ end
 function execute_command(state::DebuggerState, ::Union{Val{:f},Val{:fr}}, cmd)
     subcmds = split(cmd,' ')[2:end]
     if isempty(subcmds) || subcmds[1] == "v"
-        @info "Level is $(state.level)"
         print_frame(Base.pipe_writer(state.terminal), state.level, state.stack[end - state.level + 1])
         return false
     else
@@ -191,6 +191,37 @@ function execute_command(state::DebuggerState, ::Union{Val{:f},Val{:fr}}, cmd)
     return true
 end
 
+function execute_command(state::DebuggerState, ::Val{:w}, cmd::AbstractString)
+    # TODO enable info messages
+    cmds = split(cmd)
+    if length(cmds) == 1
+        io = Base.pipe_writer(state.terminal)
+        show_watch_list(io, state)
+        return false
+    elseif length(cmds) >= 2
+        if cmds[2] == "c"
+            if length(cmds) == 2
+                clear_watch_list!(state)
+                #info_repl(state, "cleared watch list")
+                return false
+            elseif length(cmds) == 3
+                i = parse(Int, cmds[3])
+                clear_watch_list!(state, i)
+                #info_repl(state, "removed watch list entry $i")
+                return false
+            end
+        end
+        if cmds[2] == "a"
+            if add_watch_entry!(state, join(cmds[3:end]))
+                #info_repl(state, "added watch entry: $(state.watch_list[end])")
+            end
+            return false
+        end
+    end
+    # Error
+    return execute_command(state, Val(:_), cmd)
+end
+
 function execute_command(state::DebuggerState, _, cmd)
     println("Unknown command `$cmd`. Executing `?` to obtain help.")
     execute_command(state, Val{Symbol("?")}(), "?")
@@ -200,19 +231,23 @@ function execute_command(state::DebuggerState, ::Val{:?}, cmd::AbstractString)
     display(
             @md_str """
     Basic Commands:\\
-    - `n` steps to the next line\\
-    - `s` steps into the next call\\
-    - `finish` runs to the end of the function\\
-    - `bt` shows a simple backtrace\\
-    - ``` `stuff ``` runs `stuff` in the current frame's context\\
-    - `fr v` will show all variables in the current frame\\
-    - `f n` where `n` is an integer, will go to the `n`-th frame\\
-    - `q` quits the debugger, returning `nothing`\\
+    - `n`: step to the next line\\
+    - `s`: step into the next call\\
+    - `finish`: run to the end of the function\\
+    - `bt`: show a simple backtrace\\
+    - ``` `stuff ```: run `stuff` in the current function's context\\
+    - `fr [v]`: show all variables in the current frame, `v` defaults to 1\\
+    - `w`\\
+        - `w a expr`: add an expression to the watch list\\
+        - `w`: show all watch expressions evaluated in the current function's context\\
+        - `w c [i::Int]`: clear all or the `i`:th watch expression\\
+    - `f [n::Int]`: go to the `n`-th frame\\
+    - `q`: quit the debugger, returning `nothing`\\
     Advanced commands:\\
-    - `nc` steps to the next call\\
-    - `se` does one expression step\\
-    - `si` does the same but steps into a call if a call is the next expression\\
-    - `sg` steps into a generated function\\
+    - `nc`: step to the next call\\
+    - `se`: step one expression step\\
+    - `si`: same as `se` but step into a call if a call is the next expression\\
+    - `sg`: step into a generated function\\
     """)
     return false
 end

@@ -213,4 +213,3 @@ execute_command(state, Val{:fr}(), "fr 2")
 @test execute_command(state, Val{:n}(), "n") == false
 @test execute_command(state, Val{:finish}(), "finish") == false
 @info " END ERRORS ---------------------------------------"
-

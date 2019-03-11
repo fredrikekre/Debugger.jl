@@ -50,28 +50,33 @@ end
     if Sys.isunix() && VERSION >= v"1.1.0"
         using TerminalRegressionTests
 
-        thisdir = @__DIR__
-        TerminalRegressionTests.automated_test(
-                        joinpath(thisdir,"ui/history_gcd.multiout"),
-                    ["n\n","`", "a\n", "\e[A", "\e[A", "\x3", "\x4"]) do emuterm
-            repl = REPL.LineEditREPL(emuterm, true)
-            repl.interface = REPL.setup_interface(repl)
-            repl.specialdisplay = REPL.REPLDisplay(repl)
-            stack = @make_stack my_gcd(10, 20)
-            stack[end] = JuliaInterpreter.JuliaStackFrame(stack[end], stack[end].pc[]; fullpath=false)
-            RunDebugger(stack, repl, emuterm)
-        end
-        if VERSION == v"1.1.0"
-            TerminalRegressionTests.automated_test(
-                            joinpath(thisdir,"ui/history_noinfo.multiout"),
-                        ["n\n","`", "a\n", "\e[A", "\e[A", "\x3", "\x4"]) do emuterm
+        function run_terminal_test(stack, commands, validation)
+            TerminalRegressionTests.automated_test(joinpath(@__DIR__, validation), commands) do emuterm
+            #TerminalRegressionTests.create_automated_test(joinpath(@__DIR__, validation), commands) do emuterm
                 repl = REPL.LineEditREPL(emuterm, true)
                 repl.interface = REPL.setup_interface(repl)
                 repl.specialdisplay = REPL.REPLDisplay(repl)
-                stack = @make_stack my_gcd_noinfo(10, 20)
                 stack[end] = JuliaInterpreter.JuliaStackFrame(stack[end], stack[end].pc[]; fullpath=false)
                 RunDebugger(stack, repl, emuterm)
             end
+        end
+
+        CTRL_C = "\x3"
+        EOT = "\x4"
+        UP_ARROW = "\e[A"
+
+        run_terminal_test(@make_stack(my_gcd(10, 20)),
+                          ["n\n","`", "a\n", UP_ARROW, UP_ARROW, CTRL_C,
+                           "fr\n",
+                           "w a a + b\n", "w\n", "w a sin(a)\n", "w\n", "w c 1\n", "w\n", "w c\n", "w\n",
+                          EOT,
+                          ],
+                          "ui/history_gcd.multiout")
+        
+        if v"1.1">= VERSION < v"1.2"
+            run_terminal_test(@make_stack(my_gcd_noinfo(10, 20)),
+                            ["n\n","`", "a\n", UP_ARROW, UP_ARROW, CTRL_C, EOT],
+                             "ui/history_noinfo.multiout")
         else
             @warn "Skipping tests for IR display due to mismatched Julia versions."
         end
