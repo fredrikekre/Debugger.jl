@@ -69,7 +69,7 @@ function print_next_expr(io::IO, frame::Frame)
             end
         end
     end
-    print(io, expr)
+    print(io, highlight_code(string(expr); context=io))
     println(io)
 end
 
@@ -117,6 +117,87 @@ function print_codeinfo(io::IO, frame::Frame)
         end
         printstyled(io, line, color = color)
         println(io)
+    end
+    println(io)
+end
+
+
+
+"""
+Determine the offsets in the source code to print, based on the offset of the
+currently highlighted part of the code, and the start and stop line of the
+entire function.
+"""
+function compute_source_offsets(code::String, offset::Integer, startline::Integer, stopline::Integer; file::SourceFile = SourceFile(code))
+    offsetline = compute_line(file, offset)
+    if offsetline - 3 > length(file.offsets) || startline > length(file.offsets)
+        return -1, -1
+    end
+    startoffset = max(file.offsets[max(offsetline-3,1)], file.offsets[startline])
+    stopoffset = lastindex(code)-1
+    if offsetline + 3 < lastindex(file.offsets)
+        stopoffset = min(stopoffset, file.offsets[offsetline + 3]-1)
+    end
+    if stopline + 1 < lastindex(file.offsets)
+        stopoffset = min(stopoffset, file.offsets[stopline + 1]-1)
+    end
+    startoffset, stopoffset
+end
+
+function Format.render(io::IO, ::MIME"text/ansi", tokens::Format.TokenIterator)
+    for (str, id, style) in tokens
+        fg = style.fg.active ? map(Int, (style.fg.r, style.fg.g, style.fg.b)) : :nothing
+        bg = style.bg.active ? map(Int, (style.bg.r, style.bg.g, style.bg.b)) : :nothing
+        crayon = Crayon(
+            foreground = fg,
+            background = bg,
+            bold       = style.bold,
+            italics    = style.italic,
+            underline  = style.underline,
+        )
+        print(io, crayon, str, inv(crayon))
+    end
+end
+
+const _enable_syntax_highlighting = Ref(true)
+
+function highlight_code(code; context=nothing)
+    if _enable_syntax_highlighting[]
+        return sprint(highlight, MIME("text/ansi"), code, Lexers.JuliaLexer; context=context)
+    else
+        return code
+    end
+end
+
+function print_sourcecode(io::IO, code::String, line::Integer, defline::Integer)
+    code = highlight_code(code; context=io)
+    file = SourceFile(code)
+    startoffset, stopoffset = compute_source_offsets(code, file.offsets[line], defline, line+3; file=file)
+
+    if startoffset == -1
+        printstyled(io, "Line out of file range (bad debug info?)", color=:bold)
+        return
+    end
+
+    # Compute necessary data for line numbering
+    startline = compute_line(file, startoffset)
+    stopline = compute_line(file, stopoffset)
+    current_line = line
+    stoplinelength = length(string(stopline))
+
+    code = split(code[(startoffset+1):(stopoffset+1)],'\n')
+    lineno = startline
+
+    if !isempty(code) && isempty(code[end])
+        pop!(code)
+    end
+
+    for textline in code
+        printstyled(io,
+            string(lineno, " "^(stoplinelength-length(lineno)+1));
+            color = lineno == current_line ? :yellow : :bold)
+        println(io, textline)
+        lineno += 1
     end
     println(io)
 end

@@ -49,6 +49,7 @@ end
 @testset "UI" begin
     if Sys.isunix() && VERSION >= v"1.1.0"
         Debugger._print_full_path[] = false
+        Debugger._enable_syntax_highlighting[] = false
         using TerminalRegressionTests
 
         function run_terminal_test(frame, commands, validation)
